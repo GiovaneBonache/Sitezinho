@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <p>atividade 1</p>
+        <h1>escreva abaixo os numeros a serem somados</h1>
+        <style>
+            dialog {
+            border: none;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        </style>
+    </head>
+    <body>
+        
+            <input type="num" id="numero1" placeholder="Digite o primeiro número">
+        
+        <p>+</p>
+        
+            <input type="num" id="numero2" placeholder="Digite o segundo número">
+        
+        <button onclick="somar()">somar</button>
+        <h1 style="font-size: 22px;">resultado é </h1>
+        <p><span id="resultado"></span></p>
+        
+        <dialog id="resultadoDialog">
+            <p> o resultado da soma é: </p>
+            <p><span id="resultado2"></span></p>
+            <button onclick="fechar()">OK</button>
+        </dialog>
+
+        <p> botão de funcionalidade secreta</p>
+        <button onclick="vaiTemplate()">Acessar</button>
+        <div id="container"></div>
+
+        <template id="OTemplate">
+            <div class="texto">
+                <h1>CUIDADO!</h1>
+                <p> conteudo secreto so para autorizados</p>
+                <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank">
+                <button>
+                    Voce foi avisado
+                </button>
+            </a>
+            </div>
+        </template>
+       
+
+
+        <script>
+            function somar(num1, num2){
+                var num1 = parseFloat(document.getElementById("numero1").value);
+                var num2 = parseFloat(document.getElementById("numero2").value);
+
+                var soma = num1 + num2;
+                document.getElementById("resultado").innerText = soma;
+                document.getElementById("resultado2").innerText = soma;
+                document.getElementById("resultadoDialog").showModal();
+
+                //alert("O resultado da soma é: " + soma);
+            }
+            function fechar(){
+                document.getElementById("resultadoDialog").close();
+            }
+            function vaiTemplate(){
+                var template = document.getElementById("OTemplate");
+                var clone = template.content.cloneNode(true);
+                document.getElementById("container").appendChild(clone);
+
+            }
+        </script>
+    </body>
+    </html>
